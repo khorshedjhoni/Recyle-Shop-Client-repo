@@ -22,7 +22,7 @@ const Navbar = () => {
             <li><Link>Seller</Link></li>
           </ul>
         </li>
-        <li><Link>Blog</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
       </ul>
     </div>
     <Link to='/' className="btn btn-ghost normal-case text-xl">Recycle Shop</Link>
@@ -41,7 +41,7 @@ const Navbar = () => {
             <li><Link>Seller</Link></li>
         </ul>
       </li>
-      <li><Link>Blog</Link></li>
+      <li><Link to='/blog'>Blog</Link></li>
     </ul>
   </div>
   
