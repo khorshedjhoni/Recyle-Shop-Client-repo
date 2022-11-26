@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Navbar = () => {
+  const {user,logOut} = useContext(AuthContext)
+  const handleLogOut = () => {
+    logOut()
+        .then(() => { })
+        .catch(err => console.log(err));
+}
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -11,7 +18,13 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><Link to='/'>Home</Link></li>
-        <li><Link to ='/login'>Login</Link></li>
+        {
+          user?.uid? 
+          <li><button onClick={handleLogOut}>Sign out</button></li>
+          :
+          <li><Link to ='/login'>Login</Link></li>
+        }
+        
         <li tabIndex={0}>
           <Link className="justify-between">
             Options
@@ -23,6 +36,7 @@ const Navbar = () => {
           </ul>
         </li>
         <li><Link to='/blog'>Blog</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
       </ul>
     </div>
     <Link to='/' className="btn btn-ghost normal-case text-xl">Recycle Shop</Link>
@@ -30,7 +44,12 @@ const Navbar = () => {
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
      <li><Link to='/'>Home</Link></li>
-        <li><Link to ='/login'>Login</Link></li>
+     {
+          user?.uid? 
+          <li><button onClick={handleLogOut}>Sign out</button></li>
+          :
+          <li><Link to ='/login'>Login</Link></li>
+        }
       <li tabIndex={0}>
         <Link>
         Options
@@ -42,6 +61,7 @@ const Navbar = () => {
         </ul>
       </li>
       <li><Link to='/blog'>Blog</Link></li>
+      <li><Link to='/dashboard'>Dashboard</Link></li>
     </ul>
   </div>
   
