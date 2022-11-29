@@ -1,5 +1,8 @@
 import { createBrowserRouter } from "react-router-dom"
 import Main from "../../Layout/Main"
+import AddProduct from "../../Pages/AddProduct/AddProduct"
+import Device from "../../Pages/allDevice/Device"
+import AllUsers from "../../Pages/allUsers/AllUsers"
 import Blog from "../../Pages/Blog/Blog"
 import Dashboard from "../../Pages/Dashboard/Dashboard"
 import Home from "../../Pages/Home/Home"
@@ -14,7 +17,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/categories'),
             },
             {
                 path: '/login',
@@ -28,6 +32,21 @@ export const router = createBrowserRouter([
                 path: '/blog',
                 element: <Blog ></Blog>
             },
+            {
+                path:'/addproduct',
+                element: <AddProduct></AddProduct>,
+                loader: () => fetch('http://localhost:5000/categories'),
+            },
+            {
+                path: '/allmobile/:id',
+                element: <Device></Device>,
+                loader: async ({params}) =>  fetch(`http://localhost:5000/allmobile/${params.id}`)
+            }, 
+            {
+                path: '/allUsers',
+                element: <AllUsers></AllUsers>,
+                loader: async ({params}) =>  fetch(`http://localhost:5000/users`)
+            }, 
             
             {
                 path: '/dashboard',

@@ -1,26 +1,37 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../Context/AuthProvider';
 
 const SignUp = () => {
-    const { register, handleSubmit } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { register, handleSubmit ,} = useForm();
+    const navigate = useNavigate()
+    const { createUser, updateUser} = useContext(AuthContext);
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    
+    
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     const [signUpError, setSignUPError] = useState('');
 
     const handleSignUp = (data) => {
         setSignUPError('');
-        createUser(data.email, data.password)
+        navigate(from,{replace:true})
+
+     
+        createUser(data.email, data.password,data.role,data.photoURL)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // toast('User Created Successfully.')
+                toast('User Created Successfully.')
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email,data.role);
                     })
                     .catch(err => console.log(err));
             })
@@ -28,8 +39,10 @@ const SignUp = () => {
                 console.log(error)
                 setSignUPError(error.message)
             });
-            const saveUser = (name, email) =>{
-        const user ={name, email};
+            
+            
+     const saveUser = (name, email,role) =>{
+    const user ={name, email,role};
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -39,28 +52,15 @@ const SignUp = () => {
         })
         .then(res => res.json())
         .then(data =>{
-            // setCreatedUserEmail(email);
+            setCreatedUserEmail(email);
         })
     }
     }  
-    // const saveUser = (name, email) =>{
-    //     const user ={name, email};
-    //     fetch('http://localhost:5000/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data =>{
-    //         setCreatedUserEmail(email);
-    //     })
-    // } 
+   
 
     return (
-        <div className='h-[800px] flex justify-center items-center'>
-        <div className='w-96 p-7'>
+        <div className='h-[800px] flex justify-center items-center '>
+        <div className='w-96 p-7 border-solid border-2 border-teal-800 '>
             <h2 className='text-xl text-center'>Sign Up</h2>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <div className="form-control w-full max-w-xs">
@@ -85,12 +85,28 @@ const SignUp = () => {
                     })} className="input input-bordered w-full max-w-xs" />
                   
                 </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">PhotoURL</span></label>
+                    <input type="PhotoURL" {...register("PhotoURL", {
+                        required: "PhotoURL is required",
+                       
+                    })} className="input input-bordered w-full max-w-xs" />
+                  
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">seller or customer</span></label>
+                    <input type="role" {...register("role", {
+                        required: "role is required",
+                       
+                    })} className="input input-bordered w-full max-w-xs" />
+                  
+                </div>
                 <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
                 
             </form>
             <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
-            <div className="divider">OR</div>
-            <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+           
+            
 
         </div>
     </div>
