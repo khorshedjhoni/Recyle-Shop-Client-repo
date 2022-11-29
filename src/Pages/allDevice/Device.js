@@ -5,10 +5,11 @@ import AllDevice from './AllDevice';
 const Device = () => {
     const a = useLoaderData();
     const {_id, name, img} = a;
+    console.log(a)
 
     const [review, setreview] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewss?categories=${_id}`)
+        fetch(`http://localhost:5000/reviewss?category=${_id}`)
             .then(res => res.json())
             .then(data => setreview(data))
     }, [_id])
@@ -22,6 +23,7 @@ const Device = () => {
             {
                             review.map(devices => <AllDevice
                                 key={devices ._id}
+                                
                                 devices={devices }
                             ></AllDevice>)
                         }

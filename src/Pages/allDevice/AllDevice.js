@@ -18,9 +18,7 @@ const AllDevice = ({devices}) => {
             <p>Original Price: {oPrice} </p>
             <p>Years of Use: {uses}</p>
             <p>Post Date: {date}</p>
-    {/* <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
-    </div> */}
+   
   </div>
 </div>
         </div>
