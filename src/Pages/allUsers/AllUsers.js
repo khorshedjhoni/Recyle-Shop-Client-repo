@@ -12,7 +12,7 @@ const AllUsers = () => {
             return data;
         } 
     });
-    const handleMakeAdmin = id => {
+    const handleMakeVerify= id => {
         fetch(`http://localhost:5000/users/admin/${id}`, {
             method: 'PUT', 
             headers: {
@@ -30,12 +30,16 @@ const AllUsers = () => {
     
     
     return (
-        <div>
+        <div className='p-5'>
             {
-        users.map((user, i) =><div className='flex' key={user._id}>
+        users.map((user, i) =><div className='d-flex' key={user._id}>
             <p>{i+1}</p>
             <p>. {user.name} — {user.email}</p>
-            { user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn ms-5 m-1 btn-primary'>Make Verified Seller</button>}
+            {user?.newRole === 'verified-seller' && <p>✓</p>}
+            {user?.role === 'customer' && <p className='ms-2'>(customer)</p>}
+            {user?.role === 'seller' && <p className='ms-2'>(seller)</p>}
+            {user?.role === 'admin' && <p className='ms-2'>(admin)</p>}
+            { user?.role !== 'admin' && user?.role !== 'customer' && user?.newRole !== 'verified-seller' && <button onClick={() => handleMakeVerify(user._id)} className='btn ms-5 m-1 btn-primary'>Make Verified Seller</button>}
             
           </div>)
       }

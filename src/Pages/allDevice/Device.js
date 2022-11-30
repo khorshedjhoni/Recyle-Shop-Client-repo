@@ -26,7 +26,7 @@ const Device = () => {
 
     return (
         <div className='single-course-container review-detail'>
-            <h1 className='d-grid justify-content-center bg-danger mb-5 p-2'>Category:{name}</h1>
+            <h1 className='mt-5 text-3xl font-semi-bold'>Category:{name}</h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 '>
             {
                             review.map(devices => <AllDevice
@@ -43,9 +43,7 @@ const Device = () => {
             booked={booked}
             ></BookingModal>
             }
-            {/* <BookingModal
-            booked={booked}
-            ></BookingModal> */}
+            
      
         </div>
     );

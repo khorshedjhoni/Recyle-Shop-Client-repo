@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Button } from 'bootstrap';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
@@ -25,6 +25,16 @@ const {data: users = [], } = useQuery({
       return data;
   } 
 });
+const [review, setreview] = useState([])
+
+useEffect(() => {
+    fetch(`http://localhost:5000/emaila?email=${user?.email}`)
+        .then(res => res.json())
+        .then(data => setreview(data))
+}, [user?.email])
+
+  console.log(review)
+
 
     return (
         <div className="navbar bg-base-100 ">
@@ -65,41 +75,59 @@ const {data: users = [], } = useQuery({
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
      <li><Link to='/'>Home</Link></li>
-     {
-          user?.uid? 
-          <li><button onClick={handleLogOut}>Sign out</button></li>
-          :
-          <li><Link to ='/login'>Login</Link></li>
-        }
+     
+      <li><Link to='/blog'>Blog</Link></li>
+      {/* <li><Link to='/dashboard'>Dashboard</Link></li>
+      <li><Link to='/addproduct'>Add Product</Link></li> */}
 
-{/* <div>
+                <>
                             {
-                                users.map((userr) =><div className='d-flex' key={userr._id}>
+                                user?.uid ?
+                                    <>
+                                        {/* <Link className='blog-container' to='/addservices'>Sell Here</Link>
+                                        <Link className='blog-container' to='/allUsers'>Dash Board</Link> */}
+                                        <Link className='blog-container' onClick={handleLogOut}>Log out</Link> 
+                                        {/* <Link className='blog-container' to='/myOrder'>My Orderss</Link> */}
+                                        {/* <Link className='blog-container' to='/myProducts'>My Products</Link> */}
+                                    </>
+                                    :
+                                    <>
+                                        <Link className='blog-container' to='/login'>Login</Link> 
+                                        <Link className='blog-container' to='/signup'>Register</Link> 
+                                    </>
+                            }
+
+                        </>
+                        <div>
+                            {
+                                review.map((a) =><div className='d-flex' key={a._id}>
+                                
                                 
                                 <>
-                                { userr?.role === 'seller' ? <Link className='blog-container' to='/allUsers'>userall</Link>
+                                { a?.role === 'admin' ? <Link className='blog-container' to='/allUsers'>All Buyer & All Seller</Link>
                                     :
-                                    userr?.role === 'admin' && <Link className='blog-container' to='/myOrder'>My Order</Link>
+                                    a?.role === 'seller' ? <Link className='blog-container' to='/addproduct'>Sell Here</Link> 
+                                    :
+                                    a?.role === 'customer' && <Link className='blog-container' to='/myOrder'>My Orderss</Link>
                                 }
                                 </>
-            
                                     </div>)
                             }
 
-                        </div> */}
-      {/* <li tabIndex={0}>
-        <Link>
-        Options
-          <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
-        </Link>
-        <ul className="p-2">
-        <li><Link>Buyer</Link></li>
-            <li><Link>Seller</Link></li>
-        </ul>
-      </li> */}
-      <li><Link to='/blog'>Blog</Link></li>
-      <li><Link to='/dashboard'>Dashboard</Link></li>
-      <li><Link to='/addproduct'>Add Product</Link></li>
+                        </div>
+                        <div>
+                            {
+                                review.map((a) =><div className='d-flex' key={a._id}>
+                                    <>
+                                    { a?.role === 'seller' && <Link className='blog-container' to='/myproduct'>My Products</Link>
+                                    
+                                    }
+
+                                    </>
+
+                                    </div>)
+                            }
+                        </div>
 
       
       <div>

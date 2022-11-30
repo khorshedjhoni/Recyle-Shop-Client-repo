@@ -7,9 +7,9 @@ const AllDevice = ({devices,setBooked,setreview,isLoading}) => {
     
 
     
-    // if(isLoading){
-    //     return <Loading></Loading>
-    // }
+    if(isLoading){
+        return <Loading></Loading>
+    }
     
     return (
         <div className='mx-auto ' >
@@ -28,8 +28,7 @@ const AllDevice = ({devices,setBooked,setreview,isLoading}) => {
             <p>Years of Use: {uses}</p>
             <p>Post Date: {date}</p>
     <div className="card-actions">
-      {/* <button className="btn btn-primary">Book Now</button>
-      <a href="#my-modal-2" className="btn">open modal</a> */}
+     
       <label htmlFor="booking-modal" 
       onClick={()=>setBooked(devices)} className="btn btn-primary">Book Now</label>
     </div>

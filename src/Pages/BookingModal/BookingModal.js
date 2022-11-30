@@ -45,11 +45,11 @@ const BookingModal = ({booked,isLoading,setBooked}) => {
             if (data.acknowledged) {
                 
                 toast.success('Booking confirmed');
-                setBooked(null)
+                //  
                
             }
             else{
-                // toast.error(data.message);
+                
             }
         })
 

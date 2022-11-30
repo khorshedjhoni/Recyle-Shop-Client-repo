@@ -7,6 +7,7 @@ import Blog from "../../Pages/Blog/Blog"
 import Dashboard from "../../Pages/Dashboard/Dashboard"
 import Home from "../../Pages/Home/Home"
 import Login from "../../Pages/Login/Login"
+import MyProduct from "../../Pages/MyProduct/MyProduct"
 import NotFound from "../../Pages/NotFound/NotFound"
 import SignUp from "../../Pages/SignUp/SignUp"
 
@@ -53,7 +54,11 @@ export const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Dashboard ></Dashboard>
             },
-            
+            {
+                path:'/myproduct',
+                element:<MyProduct></MyProduct>,
+                loader:  () =>  fetch(`http://localhost:5000/allmobile`)
+            }
            
         ]},
         {path: '*', element: <NotFound></NotFound>}
