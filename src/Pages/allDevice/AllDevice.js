@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from '../BookingModal/BookingModal';
+import Loading from '../Loading/Loading';
 
-const AllDevice = ({devices}) => {
+const AllDevice = ({devices,setBooked,setreview,isLoading}) => {
     const { userName, email, deviceModel, PhotoURL, location, rPrice, oPrice, uses, date } = devices ;
+    
+
+    
+    // if(isLoading){
+    //     return <Loading></Loading>
+    // }
+    
     return (
         <div className='mx-auto ' >
           
@@ -18,9 +27,16 @@ const AllDevice = ({devices}) => {
             <p>Original Price: {oPrice} </p>
             <p>Years of Use: {uses}</p>
             <p>Post Date: {date}</p>
-   
+    <div className="card-actions">
+      {/* <button className="btn btn-primary">Book Now</button>
+      <a href="#my-modal-2" className="btn">open modal</a> */}
+      <label htmlFor="booking-modal" 
+      onClick={()=>setBooked(devices)} className="btn btn-primary">Book Now</label>
+    </div>
+    
   </div>
 </div>
+
         </div>
     );
 };

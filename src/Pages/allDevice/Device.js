@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../BookingModal/BookingModal';
 import AllDevice from './AllDevice';
 
 const Device = () => {
     const a = useLoaderData();
     const {_id, name, img} = a;
-    console.log(a)
+    
+   
+
+    const[booked,setBooked] = useState(null)
+    console.log(booked)
+    
 
     const [review, setreview] = useState([])
+   
     useEffect(() => {
         fetch(`http://localhost:5000/reviewss?category=${_id}`)
             .then(res => res.json())
             .then(data => setreview(data))
     }, [_id])
+   
 
-    console.log(a);
+    
 
     return (
         <div className='single-course-container review-detail'>
@@ -22,13 +30,23 @@ const Device = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 '>
             {
                             review.map(devices => <AllDevice
-                                key={devices ._id}
+                                key={devices._id}
                                 
                                 devices={devices }
-                            ></AllDevice>)
+                                setreview={setreview}
+                                setBooked={setBooked}
+                            > </AllDevice>)
                         }
             </div>
-
+            {  booked &&
+            <BookingModal 
+            booked={booked}
+            ></BookingModal>
+            }
+            {/* <BookingModal
+            booked={booked}
+            ></BookingModal> */}
+     
         </div>
     );
 };

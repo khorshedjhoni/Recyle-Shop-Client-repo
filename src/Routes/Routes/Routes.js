@@ -7,6 +7,7 @@ import Blog from "../../Pages/Blog/Blog"
 import Dashboard from "../../Pages/Dashboard/Dashboard"
 import Home from "../../Pages/Home/Home"
 import Login from "../../Pages/Login/Login"
+import NotFound from "../../Pages/NotFound/NotFound"
 import SignUp from "../../Pages/SignUp/SignUp"
 
 export const router = createBrowserRouter([
@@ -54,5 +55,6 @@ export const router = createBrowserRouter([
             },
             
            
-        ]}
+        ]},
+        {path: '*', element: <NotFound></NotFound>}
 ])

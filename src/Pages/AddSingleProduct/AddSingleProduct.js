@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { AuthContext } from '../Context/AuthProvider';
 import { format } from 'date-fns';
+import BookingModal from '../BookingModal/BookingModal';
 
 const AddSingleProduct = ({product}) => {
     const {image, name, _id } = product;
@@ -104,7 +105,8 @@ const AddSingleProduct = ({product}) => {
                 </div> 
                 
             </div>
-        </div> 
+        </div>
+       
         </div>
     );
 };
