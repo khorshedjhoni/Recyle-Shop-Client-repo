@@ -1,8 +1,13 @@
 import React from 'react';
+import Loading from './Loading/Loading';
 
-const ReviewRow = ({x, handleDelete}) => {
+const ReviewRow = ({x, handleDelete,isLoading}) => {
     const { _id, category, userName, email, deviceModel, PhotoURL, uses,oPrice, date} = x;
     console.log(x)
+
+    if(isLoading){
+        <Loading></Loading>
+    }
     return (
         <div className='flex justify-items-center border-solid'>
             <p className=''>Model: {deviceModel}</p>

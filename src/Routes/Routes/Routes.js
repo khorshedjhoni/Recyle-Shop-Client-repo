@@ -12,6 +12,7 @@ import MyOrder from "../../Pages/MyOrder/MyOrder"
 import MyProduct from "../../Pages/MyProduct/MyProduct"
 import NotFound from "../../Pages/NotFound/NotFound"
 import SignUp from "../../Pages/SignUp/SignUp"
+import PrivateRoute from "../PrivateRoute/PrivateRoute"
 
 export const router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/allmobile/:id',
-                element: <Device></Device>,
+                element:<PrivateRoute> <Device></Device></PrivateRoute>,
                 loader: async ({params}) =>  fetch(`https://recycle-shop-server.vercel.app/allmobile/${params.id}`)
             }, 
             {
