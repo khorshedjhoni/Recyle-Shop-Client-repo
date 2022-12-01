@@ -109,19 +109,7 @@ useEffect(() => {
                             }
 
                         </div>
-                        {/* <div>
-                            {
-                                review.map((a) =><div className='d-flex' key={a._id}>
-                                    <>
-                                    { a?.role === 'seller' && <Link className='blog-container' to='/dashboard/myproduct'>My Products</Link>
-                                    
-                                    }
-
-                                    </>
-
-                                    </div>)
-                            }
-                        </div> */} 
+                        
 
 
       
