@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Add from '../Add';
 import HomeCategory from '../HomeCategory/HomeCategory';
 import Footer from '../Share/Footer/Footer';
 import Banner from './Banner/Banner';
@@ -20,6 +21,8 @@ const Home = () => {
                     </HomeCategory>)
                 }
             </div>
+            <h2 className='text-xl font-bold'>Advertisement</h2>
+            <Add></Add>
         </div>
     );
 };

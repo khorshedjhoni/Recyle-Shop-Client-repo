@@ -35,11 +35,11 @@ useEffect(() => {
                                 
                                 
                                 <>
-                                { a?.role === 'admin' ? <Link className='blog-container' to='/allUsers'>All Buyer & All Seller</Link>
+                                { a?.role === 'admin' ? <Link className='text-xl font-semibold' to='/allUsers'>All Buyer & All Seller</Link>
                                     :
                                     // a?.role === 'seller' ? <Link className='blog-container' to='/addproduct'>Sell Here</Link> 
                                     // :
-                                    a?.role === 'customer' && <Link className='blog-container' to='dashboard/myorder'>My Orders</Link>
+                                    a?.role === 'customer' && <Link className='text-xl font-semibold' to='dashboard/myorder'>My Orders</Link>
                                 }
                                 </>
                                     </div>)
@@ -49,11 +49,11 @@ useEffect(() => {
                         {
                                 review.map((a) =><div className='flex  flex-col-reverse' key={a._id}>
                                     <>
-                                    { a?.role === 'seller' && <><Link  to='/dashboard/myproduct'>My Products</Link>
+                                    { a?.role === 'seller' && <><Link className='text-xl font-semibold'  to='/dashboard/myproduct'>My Products</Link>
                                     <br />
-                                   <Link to='/dashboard/addproduct'>add Product</Link>
+                                   <Link className='text-xl font-semibold' to='/dashboard/addproduct'>add Product</Link>
                                    <br />
-                                   <Link to='/dashboard/mybuyers'>My buyers</Link>
+                                   <Link className='text-xl font-semibold' to='/dashboard/mybuyers'>My buyers</Link>
                                     </>
                                     
                                     }
