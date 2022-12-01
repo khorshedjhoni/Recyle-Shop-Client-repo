@@ -105,12 +105,12 @@ useEffect(() => {
                                 
                                 
                                 <>
-                                { a?.role === 'admin' ? <Link className='blog-container' to='/allUsers'>All Buyer & All Seller</Link>
+                                {/* { a?.role === 'admin' ? <Link className='blog-container' to='/allUsers'>All Buyer & All Seller</Link>
                                     :
                                     // a?.role === 'seller' ? <Link className='blog-container' to='/addproduct'>Sell Here</Link> 
                                     // :
                                     a?.role === 'customer' && <Link className='blog-container' to='/myOrder'>My Orders</Link>
-                                }
+                                } */}
                                 </>
                                     </div>)
                             }
