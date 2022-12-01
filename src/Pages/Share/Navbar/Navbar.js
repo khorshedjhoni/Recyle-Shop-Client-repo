@@ -66,8 +66,35 @@ useEffect(() => {
         </li> */}
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
-        
-      <li><Link to='/addproduct'>Add Product</Link></li>
+        <>
+                            {
+                                user?.uid ?
+                                    <>
+                                       
+                                        <Link className='blog-container' onClick={handleLogOut}>Log out</Link> 
+                                       
+                                    </>
+                                    :
+                                    <>
+                                        <Link className='blog-container' to='/login'>Login</Link> 
+                                        <Link className='blog-container' to='/signup'>Register</Link> 
+                                    </>
+                            }
+
+                        </>
+                        <div>
+                            {
+                                review.map((a) =><div className='d-flex' key={a._id}>
+                                
+                                
+                                <>
+                               
+                                </>
+                                    </div>)
+                            }
+
+                        </div>
+      
         
       </ul>
     </div>
