@@ -88,8 +88,7 @@ useEffect(() => {
                                         {/* <Link className='blog-container' to='/addservices'>Sell Here</Link>
                                         <Link className='blog-container' to='/allUsers'>Dash Board</Link> */}
                                         <Link className='blog-container' onClick={handleLogOut}>Log out</Link> 
-                                        {/* <Link className='blog-container' to='/myOrder'>My Orderss</Link> */}
-                                        {/* <Link className='blog-container' to='/myProducts'>My Products</Link> */}
+                                       
                                     </>
                                     :
                                     <>
