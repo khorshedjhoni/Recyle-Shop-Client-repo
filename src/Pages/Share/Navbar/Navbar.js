@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import './Navbar.css'
 
 
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
 const {data: users = [], } = useQuery({
   queryKey: ['users'],
   queryFn: async() =>{
-      const res = await fetch('http://localhost:5000/users');
+      const res = await fetch('https://recycle-shop-server.vercel.app/users');
       const data = await res.json();
       return data;
   } 
@@ -28,7 +29,7 @@ const {data: users = [], } = useQuery({
 const [review, setreview] = useState([])
 
 useEffect(() => {
-    fetch(`http://localhost:5000/emaila?email=${user?.email}`)
+    fetch(`https://recycle-shop-server.vercel.app/emaila?email=${user?.email}`)
         .then(res => res.json())
         .then(data => setreview(data))
 }, [user?.email])
@@ -77,8 +78,8 @@ useEffect(() => {
      <li><Link to='/'>Home</Link></li>
      
       <li><Link to='/blog'>Blog</Link></li>
-      {/* <li><Link to='/dashboard'>Dashboard</Link></li>
-      <li><Link to='/addproduct'>Add Product</Link></li> */}
+      <li><Link to='/dashboard'>Dashboard</Link></li>
+      {/* <li><Link to='/addproduct'>Add Product</Link></li> */}
 
                 <>
                             {
@@ -106,20 +107,20 @@ useEffect(() => {
                                 <>
                                 { a?.role === 'admin' ? <Link className='blog-container' to='/allUsers'>All Buyer & All Seller</Link>
                                     :
-                                    a?.role === 'seller' ? <Link className='blog-container' to='/addproduct'>Sell Here</Link> 
-                                    :
-                                    a?.role === 'customer' && <Link className='blog-container' to='/myOrder'>My Orderss</Link>
+                                    // a?.role === 'seller' ? <Link className='blog-container' to='/addproduct'>Sell Here</Link> 
+                                    // :
+                                    a?.role === 'customer' && <Link className='blog-container' to='/myOrder'>My Orders</Link>
                                 }
                                 </>
                                     </div>)
                             }
 
                         </div>
-                        <div>
+                        {/* <div>
                             {
                                 review.map((a) =><div className='d-flex' key={a._id}>
                                     <>
-                                    { a?.role === 'seller' && <Link className='blog-container' to='/myproduct'>My Products</Link>
+                                    { a?.role === 'seller' && <Link className='blog-container' to='/dashboard/myproduct'>My Products</Link>
                                     
                                     }
 
@@ -127,10 +128,11 @@ useEffect(() => {
 
                                     </div>)
                             }
-                        </div>
+                        </div> */} 
+
 
       
-      <div>
+      <div className='blog-container'>
                             {user?.displayName}
                     </div>
       

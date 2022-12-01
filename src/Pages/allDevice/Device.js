@@ -16,14 +16,11 @@ const Device = () => {
     const [review, setreview] = useState([])
    
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewss?category=${_id}`)
+        fetch(`https://recycle-shop-server.vercel.app/reviewss?category=${_id}`)
             .then(res => res.json())
             .then(data => setreview(data))
     }, [_id])
    
-
-    
-
     return (
         <div className='single-course-container review-detail'>
             <h1 className='mt-5 text-3xl font-semi-bold'>Category:{name}</h1>

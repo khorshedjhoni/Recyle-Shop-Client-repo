@@ -3,10 +3,16 @@ import { DayPicker } from 'react-day-picker';
 import { AuthContext } from '../Context/AuthProvider';
 import { format } from 'date-fns';
 import BookingModal from '../BookingModal/BookingModal';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AddSingleProduct = ({product}) => {
     const {image, name, _id } = product;
     const { user } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/dashboard/myproduct';
+  
 
     
     const imageHostKey = process.env.REACT_APP_imgbb_key;
@@ -16,6 +22,7 @@ const AddSingleProduct = ({product}) => {
 
     //Adding Review
     const handleSale = event =>{
+        navigate(from,{replace:true})
         event.preventDefault();
         const form = event.target;
         const name1 = form.fName.value;
@@ -58,7 +65,7 @@ const AddSingleProduct = ({product}) => {
             date
         }
 
-        fetch('http://localhost:5000/allmobile', {
+        fetch('https://recycle-shop-server.vercel.app/allmobile', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -5,8 +5,6 @@ import Loading from '../Loading/Loading';
 const AllDevice = ({devices,setBooked,setreview,isLoading}) => {
     const { userName, email, deviceModel, PhotoURL, location, rPrice, oPrice, uses, date } = devices ;
     
-
-    
     if(isLoading){
         return <Loading></Loading>
     }

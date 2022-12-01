@@ -7,6 +7,8 @@ import Blog from "../../Pages/Blog/Blog"
 import Dashboard from "../../Pages/Dashboard/Dashboard"
 import Home from "../../Pages/Home/Home"
 import Login from "../../Pages/Login/Login"
+import Mybuyers from "../../Pages/Mybuyers/Mybuyers"
+import MyOrder from "../../Pages/MyOrder/MyOrder"
 import MyProduct from "../../Pages/MyProduct/MyProduct"
 import NotFound from "../../Pages/NotFound/NotFound"
 import SignUp from "../../Pages/SignUp/SignUp"
@@ -20,7 +22,7 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/categories'),
+                loader: () => fetch('https://recycle-shop-server.vercel.app/categories'),
             },
             {
                 path: '/login',
@@ -37,29 +39,74 @@ export const router = createBrowserRouter([
             {
                 path:'/addproduct',
                 element: <AddProduct></AddProduct>,
-                loader: () => fetch('http://localhost:5000/categories'),
+                loader: () => fetch('https://recycle-shop-server.vercel.app/categories'),
             },
             {
                 path: '/allmobile/:id',
                 element: <Device></Device>,
-                loader: async ({params}) =>  fetch(`http://localhost:5000/allmobile/${params.id}`)
+                loader: async ({params}) =>  fetch(`https://recycle-shop-server.vercel.app/allmobile/${params.id}`)
             }, 
             {
                 path: '/allUsers',
                 element: <AllUsers></AllUsers>,
-                loader: async ({params}) =>  fetch(`http://localhost:5000/users`)
+                loader: async ({params}) =>  fetch(`https://recycle-shop-server.vercel.app/users`)
             }, 
+            
+            {
+                path: '/dashboard/myproduct',
+                element: <MyProduct></MyProduct>,
+                loader:  () =>  fetch(`https://recycle-shop-server.vercel.app/allmobile`)
+            },
+             {
+                path:'/dashboard/addproduct',
+                element: <AddProduct></AddProduct>,
+                loader: () => fetch('https://recycle-shop-server.vercel.app/categories'),
+            },
+             {
+                path:'/dashboard/mybuyers',
+                element: <Mybuyers></Mybuyers>,
+                
+            },
             
             {
                 path: '/dashboard',
                 element: <Dashboard ></Dashboard>
             },
-            {
-                path:'/myproduct',
-                element:<MyProduct></MyProduct>,
-                loader:  () =>  fetch(`http://localhost:5000/allmobile`)
-            }
+            // {
+            //                path:'/dashboard/mybuyers',
+            //                element: <Mybuyers></Mybuyers>,
+                            
+            //            },
+            // {
+            //     path:'/myproduct',
+            //     element:<MyProduct></MyProduct>,
+            //     loader:  () =>  fetch(`https://recycle-shop-server.vercel.app/allmobile`)
+            // }
            
         ]},
+        // {
+        //     path: '/dashboard',
+        //     element: <Dashboard></Dashboard>,
+        //     children: [
+              
+        //         {
+        //             path: '/dashboard/myproduct',
+        //             element: <MyProduct></MyProduct>,
+        //             loader:  () =>  fetch(`https://recycle-shop-server.vercel.app/allmobile`)
+        //         },
+        //          {
+        //             path:'/dashboard/addproduct',
+        //             element: <AddProduct></AddProduct>,
+        //             loader: () => fetch('https://recycle-shop-server.vercel.app/categories'),
+        //         },
+        //          {
+        //             path:'/dashboard/mybuyers',
+        //             element: <Mybuyers></Mybuyers>,
+                    
+        //         },
+                
+            
+        //     ]},
+
         {path: '*', element: <NotFound></NotFound>}
 ])

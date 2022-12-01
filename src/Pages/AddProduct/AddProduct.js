@@ -5,7 +5,7 @@ import BookingModal from '../BookingModal/BookingModal';
 
 const AddProduct = () => {
     const products = useLoaderData();
-  
+    
     return (
         <div>
         {

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 import { AuthContext } from '../Context/AuthProvider';
 
 import ReviewRow from '../ReviewRow';
@@ -10,7 +11,7 @@ const MyProduct = () => {
     const [review, setreview] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/AllMobileEmail?email=${user?.email}`)
+        fetch(`https://recycle-shop-server.vercel.app/AllMobileEmail?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setreview(data))
     }, [user?.email])
@@ -19,7 +20,7 @@ const MyProduct = () => {
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure?');
         if(proceed){
-            fetch(`http://localhost:5000/AllMobileEmail/${id}`, {
+            fetch(`https://recycle-shop-server.vercel.app/AllMobileEmail/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -36,10 +37,12 @@ const MyProduct = () => {
 
 
     return (
-        
+       
 
-        <div className='p-5'>
-            <h1>My Products</h1>
+        <div>
+            
+            <div className='p-5 '>
+            <h1 className='mb-3 font-semibold'>My Products</h1>
             {
                             review.map(x => <ReviewRow
                                 key={x._id}
@@ -48,6 +51,7 @@ const MyProduct = () => {
                             >
                             </ReviewRow>)
                         }
+        </div>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../Context/AuthProvider';
 import Loading from '../Loading/Loading';
 
-const BookingModal = ({booked,isLoading,setBooked}) => {
+const BookingModal = ({booked,isLoading,}) => {
   const { name,userName, img,deviceModel,oPrice,rPrice
   } = booked;
   const { user } = useContext(AuthContext);
@@ -32,7 +32,7 @@ const BookingModal = ({booked,isLoading,setBooked}) => {
     }
 
     
-    fetch('http://localhost:5000/bookings', {
+    fetch('https://recycle-shop-server.vercel.app/bookings', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
