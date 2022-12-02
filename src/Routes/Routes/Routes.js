@@ -73,41 +73,9 @@ export const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Dashboard ></Dashboard>
             },
-            // {
-            //                path:'/dashboard/mybuyers',
-            //                element: <Mybuyers></Mybuyers>,
-                            
-            //            },
-            // {
-            //     path:'/myproduct',
-            //     element:<MyProduct></MyProduct>,
-            //     loader:  () =>  fetch(`https://recycle-shop-server.vercel.app/allmobile`)
-            // }
-           
-        ]},
-        // {
-        //     path: '/dashboard',
-        //     element: <Dashboard></Dashboard>,
-        //     children: [
-              
-        //         {
-        //             path: '/dashboard/myproduct',
-        //             element: <MyProduct></MyProduct>,
-        //             loader:  () =>  fetch(`https://recycle-shop-server.vercel.app/allmobile`)
-        //         },
-        //          {
-        //             path:'/dashboard/addproduct',
-        //             element: <AddProduct></AddProduct>,
-        //             loader: () => fetch('https://recycle-shop-server.vercel.app/categories'),
-        //         },
-        //          {
-        //             path:'/dashboard/mybuyers',
-        //             element: <Mybuyers></Mybuyers>,
-                    
-        //         },
-                
             
-        //     ]},
+        ]},
+       
 
         {path: '*', element: <NotFound></NotFound>}
 ])

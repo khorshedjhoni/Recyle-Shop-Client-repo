@@ -63,14 +63,5 @@ const ReviewRow = ({x, handleDelete,isLoading}) => {
 };
 
 export default ReviewRow;
-{/* <button onClick={() => handleAdvertisement(_id)} className='btn ms-5 m-1 btn-primary '>Advertise</button> */}
-
-// {
-//     review.map(a =><div className='flex items-center' key={a._id}>
-    
-//     { a?.addV !== 'advertise'  && <button onClick={() => handleAdvertisement(_id)} className='btn ms-5 m-1 btn-primary miya1'>Advertise</button>} 
-   
-    
-//   </div>)
-// }
+ 
 

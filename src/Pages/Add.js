@@ -33,9 +33,7 @@ const Add = () => {
   <div className="card-body">
     <h2 className="card-title">{a.deviceModel}</h2>
     <p>Price:{a.rPrice}</p>
-    {/* <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div> */}
+   
   </div>
 </div>
                                           
