@@ -18,8 +18,8 @@ const Add = () => {
 
 
     return (
-        <div className=' gird grid-cols-2'>
-            {/* flex flex-col-reverse mt-10  */}
+        <div className=' flex flex-col-reverse mt-10 '>
+           
                             {
                                 review.map((a) =><div className='' key={a._id}>
                                 
@@ -53,7 +53,3 @@ const Add = () => {
 };
 
 export default Add;
-{/* <h4>{a.deviceModel}</h4><br />
-<img  src={a.PhotoURL} alt="" /> <br />
-
-<p>Price: {a.rPrice}</p> */}
