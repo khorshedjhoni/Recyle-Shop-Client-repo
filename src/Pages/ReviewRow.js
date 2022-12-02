@@ -3,7 +3,8 @@ import Loading from './Loading/Loading';
 import React, { useContext, useEffect, useState } from 'react';
 // import  { useContext,   } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
+
 
 
 const ReviewRow = ({x, handleDelete,isLoading}) => {
@@ -35,7 +36,7 @@ const ReviewRow = ({x, handleDelete,isLoading}) => {
     }
 
    
-    const [review, setreview] = useState([])
+    const [review, setreview] = useState([]) 
 
     useEffect(() => {
         fetch(`https://recycle-shop-server.vercel.app/allmobile`)
@@ -55,18 +56,21 @@ const ReviewRow = ({x, handleDelete,isLoading}) => {
         <img className='w-40 rounded-full' src={PhotoURL} alt="" />
         <h2>Price:{oPrice}</h2>
         <button onClick={() => handleDelete(_id)} className='blog-container mt-5 mb-5'>❌Delete</button>
-        {
-            review.map(a =><div className='d-flex align-items-center' key={a._id}>
-            
-            { a?.addV !== 'advertise'  && <button onClick={() => handleAdvertisement(_id)} className='bt ms-5 m-1 btn-primary miya1'>Advertise</button>} 
-           
-            
-          </div>)
-      }
+       <button onClick={() => handleAdvertisement(_id)} className='btn ms-5 m-1 btn-primary '>Advertise</button>
     </div>
 );
     
 };
 
 export default ReviewRow;
+{/* <button onClick={() => handleAdvertisement(_id)} className='btn ms-5 m-1 btn-primary '>Advertise</button> */}
+
+// {
+//     review.map(a =><div className='flex items-center' key={a._id}>
+    
+//     { a?.addV !== 'advertise'  && <button onClick={() => handleAdvertisement(_id)} className='btn ms-5 m-1 btn-primary miya1'>Advertise</button>} 
+   
+    
+//   </div>)
+// }
 

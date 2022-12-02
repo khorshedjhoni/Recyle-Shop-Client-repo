@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
+
 import { AuthContext } from '../Context/AuthProvider';
 import Loading from '../Loading/Loading';
 

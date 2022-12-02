@@ -12,13 +12,14 @@ const Add = () => {
             .then(res => res.json())
             .then(data => setreview(data))
     }, [])
-    console.log(review.deviceModel)
+    
 
 
 
 
     return (
-        <div>
+        <div className=' gird grid-cols-2'>
+            {/* flex flex-col-reverse mt-10  */}
                             {
                                 review.map((a) =><div className='' key={a._id}>
                                 
@@ -27,10 +28,16 @@ const Add = () => {
                             {
                                 a?.addV?
                                     <>
-                                        <h4>{a.deviceModel}</h4><br />
-                                        <img  src={a.PhotoURL} alt="" /> <br />
-                                        
-                                        <p>Price: {a.rPrice}</p>
+                                      <div className="card card-compact w-96 bg-base-100 shadow-xl mb-10">
+  <figure><img className='w-100' src={a.PhotoURL}alt="Shoes" /></figure>
+  <div className="card-body">
+    <h2 className="card-title">{a.deviceModel}</h2>
+    <p>Price:{a.rPrice}</p>
+    {/* <div className="card-actions justify-end">
+      <button className="btn btn-primary">Buy Now</button>
+    </div> */}
+  </div>
+</div>
                                           
                                     </>
                                     :
@@ -48,3 +55,7 @@ const Add = () => {
 };
 
 export default Add;
+{/* <h4>{a.deviceModel}</h4><br />
+<img  src={a.PhotoURL} alt="" /> <br />
+
+<p>Price: {a.rPrice}</p> */}

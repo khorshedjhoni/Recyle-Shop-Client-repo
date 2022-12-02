@@ -34,21 +34,7 @@ const AddSingleProduct = ({product}) => {
         const oPrice = form.oPrice.value;
         const uses = form.uses.value;
         const date = form.date.value;
-        // console.log(form.ImageURL)
-        // const image =event.ImageURL;
         
-        
-        // const formData = new FormData();
-        // formData.append('image', image);
-        // const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        // .then(res=>res.json())
-        // .then(imgData=>{
-        //     console.log(imgData)
-        // })
         
 
         

@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
-import { toast } from 'react-toastify';
+
 
 const AllUsers = () => {
     const {data: users = [], refetch} = useQuery({

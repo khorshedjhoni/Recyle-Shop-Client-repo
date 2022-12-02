@@ -21,8 +21,10 @@ const Home = () => {
                     </HomeCategory>)
                 }
             </div>
-            <h2 className='text-xl font-bold'>Advertisement</h2>
+           <div >
+           <h2 className='text-xl font-bold'>Advertisement</h2>
             <Add></Add>
+           </div>
         </div>
     );
 };
